@@ -26,7 +26,7 @@ cp ${script_path} ${exp_home}
 
 
 module load Anaconda3/2024.06
-conda activate codonfm
+source activate codonfm
 # if ncbi-genome-download not found, install it by:
 # pip install ncbi-genome-download
 
