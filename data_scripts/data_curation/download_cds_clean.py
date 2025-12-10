@@ -212,7 +212,7 @@ meta = meta.loc[~meta['taxid'].isin(taxids_to_remove)]
 meta.groupby('group')['#assembly_accession'].apply(lambda x:x.unique().shape[0])
 
 
-def download_files(ftp_paths, destination_folder='downloads'):
+def download_files(ftp_paths, destination_folder='ncbi_refseq_reference/raw'):
     if not os.path.exists(destination_folder):
         os.makedirs(destination_folder)
     

@@ -29,13 +29,13 @@ cp ${script_path} ${exp_home}
 # if ncbi-genome-download not found, install it by:
 # pip install ncbi-genome-download
 
-cd $MYGROUP
-mkdir -p $MYGROUP/codonfm_data
+cd $MYGROUP/CodonFM/data_scripts/data_curation
+
 mkdir -p $MYGROUP/ncbi_refseq_reference
 
 wget https://ftp.ncbi.nlm.nih.gov/genomes/refseq/assembly_summary_refseq.txt
-
-
 wget https://ftp.ncbi.nlm.nih.gov/pub/taxonomy/taxdmp.zip
 unzip taxdmp.zip
 rm taxdmp.zip
+
+python download_cds_clean.py > ${logfile} 2>&1
