@@ -25,7 +25,8 @@ git log -1 --pretty=format:"%cd %H %s" > ${logfile}
 cp ${script_path} ${exp_home}
 
 
-# module load python/3.11.6 py-pip/23.1.2-py3.11.6
+module load Anaconda3/2024.06
+conda activate codonfm
 # if ncbi-genome-download not found, install it by:
 # pip install ncbi-genome-download
 
