@@ -200,7 +200,7 @@ def translate(seq, codon_dict):
 # !wget https://ftp.ncbi.nlm.nih.gov/genomes/refseq/assembly_summary_refseq.txt
 
 #NOTE: that this file may be changing. The models were trained with release version 228 downloaded on Mar-10-2025
-meta = pd.read_table('codonfm_data/assembly_summary_refseq.txt', skiprows=1,low_memory=False)
+meta = pd.read_table('assembly_summary_refseq.txt', skiprows=1,low_memory=False)
 meta = meta.loc[(meta['refseq_category']=='reference genome')]
 
 meta.groupby('group')['#assembly_accession'].apply(lambda x:x.unique().shape[0])
