@@ -18,7 +18,6 @@
 ###############################################################
 echo $NEW_LOG_DIR_BASE_NAME
 echo $LOG_DIR_ROOT
-echo $WANDB_API_KEY
 echo "-----"
 
 exp_home="${NEW_LOG_DIR_BASE_NAME}_${SLURM_JOB_ID}"
