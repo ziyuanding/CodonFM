@@ -57,4 +57,6 @@ python -c "print('Hello, World!')" > ${log_file} 2>&1
 
 
 # After job is done, copy the vanilla slurm log to the experiment directory
-cp ${LOG_DIR_ROOT}/slurm_logs/${SLURM_JOB_NAME}_${SLURM_JOB_ID}.out ${exp_home}/slurm_stdout.log
+
+set -x
+cp -v ${LOG_DIR_ROOT}/slurm_logs/${SLURM_JOB_NAME}_${SLURM_JOB_ID}.out ${exp_home}/slurm_stdout.log
