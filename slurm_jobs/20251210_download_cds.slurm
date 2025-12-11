@@ -30,7 +30,7 @@ slurm_var_file=$exp_home/slurm_env
 
 touch $log_file
 git log -1 --pretty=format:"%cd %H %s" > ${git_file}
-cp ${script_path} ${exp_home}
+cp ${script_path} ${exp_home}/$(basename "$0")
 env | grep "SLURM_" > ${slurm_var_file}
 
 
@@ -57,6 +57,5 @@ python -c "print('Hello, World!')" > ${log_file} 2>&1
 
 
 # After job is done, copy the vanilla slurm log to the experiment directory
-
 set -x
 cp -v ${LOG_DIR_ROOT}/slurm_logs/${SLURM_JOB_NAME}_${SLURM_JOB_ID}.out ${exp_home}/slurm_stdout.log
