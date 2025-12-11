@@ -324,6 +324,10 @@ def process_file(fn, output_dir):
     group_name = assembly_to_group[assembly] if ref_classes[taxid] != 'Primates' else ref_classes[taxid]
     output_file = os.path.join(output_dir, f"{group_name}_{assembly}.csv")
 
+    if os.path.exists(output_file):
+        df = pd.read_csv(output_file)
+        return taxid, group_name, df.shape[0]
+    
     with gzip.open(fn, 'rt') as f: #, open(output_file, 'w') as outfile:
         # Write the CSV header
         parsed_data = []

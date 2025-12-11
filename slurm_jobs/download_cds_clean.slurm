@@ -51,7 +51,7 @@ wget https://ftp.ncbi.nlm.nih.gov/pub/taxonomy/taxdmp.zip
 unzip -o taxdmp.zip
 rm taxdmp.zip
 
-# python -c "print('Hello, World!')" > ${log_file} 2>&1
+# will skip download and processing
 python download_cds_clean.py > ${log_file} 2>&1
 
 
