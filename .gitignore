@@ -169,3 +169,11 @@ configs/local/default.yaml
 # SSH and security
 .ssh
 .gnupg
+
+# data files
+*.csv
+*.dmp
+*.gz
+data_scripts/data_curation/assembly_summary_refseq.txt
+data_scripts/data_curation/gc.prt
+data_scripts/data_curation/readme.txt
