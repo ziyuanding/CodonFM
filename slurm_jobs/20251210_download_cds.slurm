@@ -30,7 +30,7 @@ slurm_var_file=$exp_home/slurm_env
 
 touch $log_file
 git log -1 --pretty=format:"%cd %H %s" > ${git_file}
-cp -v ${script_path} ${exp_home}/$(basename "$0")
+cp -v ${script_file} ${exp_home}/$(basename "$0")
 env | grep "SLURM_" > ${slurm_var_file}
 
 
