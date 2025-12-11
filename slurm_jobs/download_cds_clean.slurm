@@ -42,17 +42,17 @@ source activate codonfm
 ###############################################################
 #    Your code goes below this line
 ###############################################################
-# cd $MYGROUP/CodonFM/data_scripts/data_curation
+cd $MYGROUP/CodonFM/data_scripts/data_curation
 
-# mkdir -p $MYGROUP/ncbi_refseq_reference
+mkdir -p $MYGROUP/ncbi_refseq_reference
 
-# wget https://ftp.ncbi.nlm.nih.gov/genomes/refseq/assembly_summary_refseq.txt
-# wget https://ftp.ncbi.nlm.nih.gov/pub/taxonomy/taxdmp.zip
-# unzip taxdmp.zip
-# rm taxdmp.zip
+wget https://ftp.ncbi.nlm.nih.gov/genomes/refseq/assembly_summary_refseq.txt
+wget https://ftp.ncbi.nlm.nih.gov/pub/taxonomy/taxdmp.zip
+unzip taxdmp.zip
+rm taxdmp.zip
 
-python -c "print('Hello, World!')" > ${log_file} 2>&1
-# python download_cds_clean.py > ${logfile} 2>&1
+# python -c "print('Hello, World!')" > ${log_file} 2>&1
+python download_cds_clean.py > ${logfile} 2>&1
 
 
 # After job is done, copy the vanilla slurm log to the experiment directory

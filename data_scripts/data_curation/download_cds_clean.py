@@ -231,7 +231,7 @@ def download_files(ftp_paths, destination_folder='ncbi_refseq_reference/raw'):
         except Exception as e:
             print(f"Failed to download {file_url}. Error: {e}")
 
-download_files(meta['ftp_path'].tolist())
+# download_files(meta['ftp_path'].tolist())
 
 
 
