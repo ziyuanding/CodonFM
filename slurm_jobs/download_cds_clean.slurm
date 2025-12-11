@@ -44,14 +44,14 @@ source activate codonfm
 ###############################################################
 cd $MYGROUP/CodonFM/data_scripts/data_curation
 
-mkdir -p $MYGROUP/ncbi_refseq_reference
+mkdir -p $MYGROUP/ncbi_refseq_reference/processed_grouped
 
 wget https://ftp.ncbi.nlm.nih.gov/genomes/refseq/assembly_summary_refseq.txt
 wget https://ftp.ncbi.nlm.nih.gov/pub/taxonomy/taxdmp.zip
 unzip -o taxdmp.zip
 rm taxdmp.zip
 
-# will skip download and processing
+# will skip download and processing.
 python download_cds_clean.py > ${log_file} 2>&1
 
 
