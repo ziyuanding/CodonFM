@@ -5,7 +5,7 @@
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=32
-#SBATCH --mem=32G
+#SBATCH --mem=256G
 #SBATCH --time=1-00:00:00
 #SBATCH --mail-type=END,FAIL
 
@@ -44,7 +44,7 @@ source activate codonfm
 ###############################################################
 cd $MYGROUP/CodonFM/data_scripts/data_curation
 
-mkdir -p $MYGROUP/ncbi_refseq_reference/processed_grouped
+mkdir -p ncbi_refseq_reference/processed_grouped
 
 wget https://ftp.ncbi.nlm.nih.gov/genomes/refseq/assembly_summary_refseq.txt
 wget https://ftp.ncbi.nlm.nih.gov/pub/taxonomy/taxdmp.zip
