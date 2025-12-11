@@ -7,7 +7,7 @@
 #SBATCH --cpus-per-task=8
 #SBATCH --mem=32G
 #SBATCH --time=1-00:00:00
-#SBATCH --mail-type=ALL
+#SBATCH --mail-type=END,FAIL
 
 # Note: 
 # 1. job-name will be overrided by the sbatch command.
