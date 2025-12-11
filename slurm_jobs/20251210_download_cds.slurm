@@ -9,34 +9,47 @@
 #SBATCH --time=1-00:00:00
 #SBATCH --mail-type=ALL
 
+# Note: 
+# 1. job-name will be overrided by the sbatch command.
+# 2. NEW_LOG_DIR_BASE_NAME, LOG_DIR_ROOT and WANDB_API_KEY should be exported in the sbatch command.
 
 ###############################################################
-base_dir="${MYSCRATCH}/general_exp"
-prefix="${SLURM_JOB_NAME}_"
-script_path=$(realpath "$0")
-
-exp_home="${MYSCRATCH}/general_exp/${SLURM_JOB_NAME}_${SLURM_JOB_ID}"
+#   Set up logging and experiment directory
+###############################################################
+exp_home="${NEW_LOG_DIR_BASE_NAME}_${SLURM_JOB_ID}"
 mkdir -p $exp_home
-logfile=$exp_home/raw.log
-touch $logfile
+log_file=$exp_home/raw.log
+git_file=$exp_home/git_info
+script_file=$(realpath "$0")
+slurm_var_file=$exp_home/slurm_env
 
-
-git log -1 --pretty=format:"%cd %H %s" > ${logfile}
+touch $log_file
+git log -1 --pretty=format:"%cd %H %s" > ${git_file}
 cp ${script_path} ${exp_home}
+env | grep "SLURM_" > ${slurm_var_file}
 
 
+###############################################################
+# Activate environment
+###############################################################
 module load Anaconda3/2024.06
 source activate codonfm
-# if ncbi-genome-download not found, install it by:
-# pip install ncbi-genome-download
 
-cd $MYGROUP/CodonFM/data_scripts/data_curation
+###############################################################
+#    Your code goes below this line
+###############################################################
+# cd $MYGROUP/CodonFM/data_scripts/data_curation
 
-mkdir -p $MYGROUP/ncbi_refseq_reference
+# mkdir -p $MYGROUP/ncbi_refseq_reference
 
-wget https://ftp.ncbi.nlm.nih.gov/genomes/refseq/assembly_summary_refseq.txt
-wget https://ftp.ncbi.nlm.nih.gov/pub/taxonomy/taxdmp.zip
-unzip taxdmp.zip
-rm taxdmp.zip
+# wget https://ftp.ncbi.nlm.nih.gov/genomes/refseq/assembly_summary_refseq.txt
+# wget https://ftp.ncbi.nlm.nih.gov/pub/taxonomy/taxdmp.zip
+# unzip taxdmp.zip
+# rm taxdmp.zip
 
-python download_cds_clean.py > ${logfile} 2>&1
+python -c "print('Hello, World!')" > ${log_file} 2>&1
+# python download_cds_clean.py > ${logfile} 2>&1
+
+
+# After job is done, copy the vanilla slurm log to the experiment directory
+cp $LOG_DIR_ROOT/slurm_logs/${SLURM_JOB_NAME}_${SLURM_JOB_ID}.out ${exp_home}/slurm_stdout.log
